@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: summer-cloud-nacos-producer
+  #profiles:
+    #active: test
+  cloud:
+    nacos:
+      config:
+        enabled: false
+      discovery:
+        enabled: false
+      #nacos:
+      #config:
+        #server-addr: http://127.0.0.1:8848
+        #file-extension: yml
+        #group: TEST_GROUP
+        #namespace: 6b1458d7-7a82-4e53-a17d-15672132654c
+      #discovery:
+        #server-addr: http://127.0.0.1:8848/
+        #namespace:
+        #cluster-name: 集群名称
+    #sentinel:
+      #datasource:
+        #ds1:
+          #nacos:
+            #server-addr: http://127.0.0.1:8848/
+            #dataId: ${spring.application.name}
+            #groupId: DEFAULT_GROUP
+            #data-type: json
+            #rule-type: flow
+    #sentinel:
+      #enabled: true
+      #transport:
+        #配置sentinel dashboard地址
+        #dashboard: http://127.0.0.1:8080
+        #默认端口是8719，如果被占用会自动从8719+1扫描，直到找到未被占用的端口
+        #port: 8719
+# nacos还可以通过原数据进行版本调用控制
+server:
+  port: 9999

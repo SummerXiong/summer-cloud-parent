@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: http://127.0.0.1:8848
+        file-extension: yml
+        group: TEST_GROUP
+        namespace: 6b1458d7-7a82-4e53-a17d-15672132654c

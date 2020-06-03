@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: summer-cloud-service-hystrix-dashboard
+server:
+  port: 0
+eureka:
+  client:
+    enabled: false

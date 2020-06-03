@@ -1,0 +1,15 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: summer-cloud-service-zk
+  cloud:
+    zookeeper:
+      #enabled: false
+      connect-string: 127.0.0.1:2181
+      discovery:
+        enabled: true
+#因为父工程项目中存在eureka的依赖,不关闭eureka服务的话会导致项目启动失败
+eureka:
+  client:
+    enabled: false

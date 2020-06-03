@@ -1,0 +1,36 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: summer-cloud-order
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka
+    #设置客户端信息的上报时间
+    instance-info-replication-interval-seconds: 10
+    #获取注册信息的周期时间
+    registry-fetch-interval-seconds: 10
+  instance:
+    prefer-ip-address: true
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 5000
+## 负载均衡配置
+summer-cloud-payment:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#Feign的接口日志
+logging:
+  level:
+    com.summer.service.api.IPaymentApi: debug

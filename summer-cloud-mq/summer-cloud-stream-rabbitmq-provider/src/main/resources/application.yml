@@ -1,0 +1,38 @@
+server:
+  port: 8008
+spring:
+  application:
+    name: summer-cloud-stream-rabbitmq-provider
+  cloud:
+    stream:
+      #此处配置要绑定的rabbitmq的服务信息
+      binders:
+        #表示定义的名称, 用于binding整合
+        defaultRabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 127.0.0.1
+                port: 5672
+                username: guest
+                password: guest
+      # 服务的整合处理
+      bindings:
+        #这个名字是一个通道的名称
+        output:
+          #表示要使用的Exchange名称定义
+          destination: studyExchange
+          #设置消息类型
+          content-type: application/json
+          #设置要绑定的消息服务的具体设置
+          binder: defaultRabbit
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka
+    registry-fetch-interval-seconds: 10
+    instance-info-replication-interval-seconds: 10
+  instance:
+    instance-id: ${spring.application.name}
+    prefer-ip-address: true

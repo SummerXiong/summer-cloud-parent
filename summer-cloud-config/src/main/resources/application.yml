@@ -1,0 +1,38 @@
+server:
+  port: 8007
+spring:
+  application:
+    name: summer-cloud-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/SummerXiong/summer-portal.git
+          #搜索目录
+          search-paths:
+            - summer-portal
+          username: xxxx@qq.com
+          password: xxxxx
+      # 读取分支
+      label: master
+  #rabbitmq相关配置
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    registry-fetch-interval-seconds: 10
+    instance-info-replication-interval-seconds: 10
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka  #,http://127.0.0.1:9999/eureka
+  instance:
+    instance-id: ${spring.application.name}
+    prefer-ip-address: true
+# rabbitmq相关配置暴露bus刷新配置的端点
+management:
+  endpoint:
+    web:
+      exposure:
+        include: 'bus-refresh'

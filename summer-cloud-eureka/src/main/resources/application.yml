@@ -1,0 +1,21 @@
+server:
+  port: 8888
+  hostname: 127.0.0.1
+spring:
+  application:
+    name: summer-cloud-eureka
+eureka:
+  client:
+    #不向注册中注册自己
+    register-with-eureka: false
+    #不需要去检索服务
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${server.hostname}:8888/eureka
+  server:
+    #关闭自我保护机制,保证不可用的服务被及时剔除
+    #Eureka的自我保护机制,能够保护服务在短时间(默认90s)的心跳检测失败
+    #而不被Eureka剔除注册信息,从而避免网络的延迟而导致误删除
+    #enable-self-preservation: false
+    #单位毫米,自我保护的最大时间,默认是9000
+    #eviction-interval-timer-in-ms: 2000

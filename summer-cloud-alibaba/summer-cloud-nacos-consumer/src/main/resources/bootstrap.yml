@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: summer-cloud-nacos-consumer
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://127.0.0.1:8848/
+      config:
+        server-addr: http://127.0.0.1:8848
+        file-extension: yml
+
+# == 由于配置已交托给nacos管理,所以相关的配置属性将注释掉 ==
+#
+#
+# feign是基于WebService客户端实现的，Spring Cloud对feign进行了封装,
+# 使其支持了Spring注解和HttpMessageConverters
+#
+# openfeign超时控制
+# ribbon:
+#  ReadTimeout: 5000
+#  ConnectTimeout: 50000
+#
+# 激活Sentinel对Feign的支持
+# feign:
+#   sentinel:
+#     enabled: true

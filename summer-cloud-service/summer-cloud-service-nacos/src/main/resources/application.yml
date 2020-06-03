@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: summer-cloud-service-nacos
+  profiles:
+    active: test

@@ -1,0 +1,43 @@
+server:
+  port: 8006
+spring:
+  application:
+    name: summer-cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #开启从注册中心创建动态路由功能,利用微服务名进行路由
+      routes:
+        #- id: summer-cloud-payment-routh #路由的ID,没有固定的规则,建议配合服务名
+        #  uri: http://localhost:812321 #匹配后提供服务的路由地址
+        #  predicates:
+        #    - Path=/payment/get/**
+        #- id: summer-cloud-payment-routh2
+        #  url: http://localhost:812321
+        #  predicates:
+        #    - Path=/payment/test/**
+        - id: summer-cloud-payment-routh
+          uri: lb://summer-cloud-payment
+          predicates:
+            - Path=/payment/**
+            #- Header=X-Request-Id, \d+ # 请求头必须携带要有X-Request-Id属性,并且值为整数
+            - Method=GET
+            #- Query=username, \d+ #必须携带参数名为username,且值为整数
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka  #,http://127.0.0.1:9999/eureka
+    #设置客户端信息的上报时间
+    instance-info-replication-interval-seconds: 10
+    #获取注册信息的周期时间
+    registry-fetch-interval-seconds: 10
+    #enabled: false
+  instance:
+    instance-id: ${spring.application.name}
+    prefer-ip-address: true
+
+#logging:
+  #level:
+    # log 级别
+    #org.springframework.cloud.gateway: debug
