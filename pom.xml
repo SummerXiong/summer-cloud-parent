@@ -24,7 +24,7 @@
         <swagger2.version>2.9.2</swagger2.version>
         <swaggerBootstrapUI.version>1.9.0</swaggerBootstrapUI.version>
         <hutool.version>5.2.4</hutool.version>
-        <mysql.version>5.1.48</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
         <mybatis.version>2.1.1</mybatis.version>
         <tkMybatisMapper.version>2.1.5</tkMybatisMapper.version>
         <pagehelper.version>1.2.5</pagehelper.version>
